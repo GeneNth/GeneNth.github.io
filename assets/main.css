@@ -477,6 +477,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin: 8px 0;
+  table-layout: fixed; /* 固定列宽 */
 }
 
 .about-card th,
@@ -484,13 +485,26 @@ body {
   padding: 10px 12px;
   text-align: left;
   border-bottom: 1px solid var(--border);
+  vertical-align: top;
 }
 
 .about-card th {
   background: var(--bg);
   font-weight: 600;
-  width: 22%;
   color: var(--text);
+}
+
+/* 第一列（方向）窄一点 */
+.about-card th:first-child,
+.about-card td:first-child {
+  width: 18%;
+  white-space: nowrap;
+}
+
+/* 第二列（具体技能）宽一点 */
+.about-card th:last-child,
+.about-card td:last-child {
+  width: 82%;
 }
 
 .about-card ul {
