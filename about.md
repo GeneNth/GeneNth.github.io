@@ -4,7 +4,7 @@ title: 关于
 permalink: /about/
 ---
 
-<div class="about-card">
+<div class="about-card" markdown="1">
 
 ## 👋 你好，我是 GeneNth
 
@@ -14,7 +14,7 @@ permalink: /about/
 
 </div>
 
-<div class="about-card">
+<div class="about-card" markdown="1">
 
 ## 🎯 关于基因N方
 
@@ -26,7 +26,7 @@ permalink: /about/
 
 </div>
 
-<div class="about-card">
+<div class="about-card" markdown="1">
 
 ## 🛠️ 技术领域
 
@@ -40,7 +40,7 @@ permalink: /about/
 
 </div>
 
-<div class="about-card">
+<div class="about-card" markdown="1">
 
 ## 📬 找到我
 
@@ -51,7 +51,7 @@ permalink: /about/
 
 </div>
 
-<div class="about-card">
+<div class="about-card" markdown="1">
 
 > ✨ *"即使是最小的帆，也能远航。"* ⛵
 
