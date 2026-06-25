@@ -1,0 +1,17 @@
+title: 基因N方
+author: GeneNth
+email: your@email.com
+description: 探索基因与音乐的交叉领域
+baseurl: ""
+url: "https://GeneNth.github.io"
+twitter_username: GeneNth
+github_username: GeneNth
+
+permalink: /:year/:month/:day/:title.html
+
+markdown: kramdown
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
