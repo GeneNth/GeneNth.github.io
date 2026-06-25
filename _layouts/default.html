@@ -3,33 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta name="keywords" content="基因,基因N方,GeneNth,生物学,音乐,基因表达,生物信息学">
   <meta name="author" content="{{ site.author }}">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/logo.svg' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <img src="{{ '/assets/logo.svg' | relative_url }}" alt="{{ site.title }}" class="site-logo">
-    <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    <p class="site-slogan">{{ site.slogan }}</p>
-    <p class="site-tagline">{{ site.tagline }}</p>
-    <nav class="site-nav">
-      <a href="{{ '/' | relative_url }}">首页</a>
-      <a href="{{ '/about/' | relative_url }}">关于</a>
-    </nav>
-  </header>
-  <main>{{ content }}</main>
-  <footer class="site-footer">
-    <p>{{ site.tagline }}</p>
-    <p>© {{ site.time | date: "%Y" }} {{ site.author }}. 探索基因 · 分享乐趣</p>
-    <p>
-      <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
-      ·
-      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-    </p>
-  </footer>
+  <div class="page-wrapper">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="site-brand">
+          <img src="{{ '/assets/logo.svg' | relative_url }}" alt="{{ site.title }}" class="site-logo">
+          <div class="site-meta">
+            <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+            <p class="site-slogan">{{ site.slogan }}</p>
+          </div>
+        </div>
+        <nav class="site-nav">
+          <a href="{{ '/' | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}">首页</a>
+          <a href="{{ '/about/' | relative_url }}" class="nav-link{% if page.url == '/about/' %} active{% endif %}">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <main class="main-content">
+        {{ content }}
+      </main>
+      
+      <aside class="sidebar">
+        {% include sidebar.html %}
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-slogan">{{ site.tagline }}</p>
+        <p class="footer-copyright">© {{ site.time | date: "%Y" }} {{ site.author }} · 探索基因 · 分享乐趣</p>
+        <div class="footer-links">
+          <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
+          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
