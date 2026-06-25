@@ -1,10 +1,9 @@
 title: 基因N方
+author: GeneNth
+description: 探索基因与音乐的科学交叉领域
 slogan: Explore Genes, Share Fun
 tagline: 探索基因与音乐的科学交叉领域
-description: >
-  基因N方 - 生命密码的快乐解读者！用浅显易懂的语言帮你揭开基因世界的神秘面纱。
-  探索基因表达与音乐节奏的关联，分享生物信息学与音乐分析的有趣内容。
-author: GeneNth
+github_username: GeneNth
 email: genenth@163.com
 url: "https://genenth.github.io"
 baseurl: ""
