@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<article class="post-detail">
+  {% if page.cover %}
+  <div class="post-hero">
+    <img src="{{ page.cover | relative_url }}" alt="{{ page.title }}">
+    <div class="post-hero-overlay"></div>
+    <div class="post-hero-content">
+      <h1 class="post-hero-title">{{ page.title }}</h1>
+      <div class="post-hero-meta">
+        <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
+        <span>⏱️ 约 {{ content | number_of_words | divided_by: 200 | plus: 1 }} 分钟</span>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
+      <span>⏱️ 约 {{ content | number_of_words | divided_by: 200 | plus: 1 }} 分钟</span>
+    </div>
+  </header>
+  {% endif %}
+  
+  <div class="post-body">
+    {{ content }}
+  </div>
+  
+  <div class="post-tags-detail">
+    {% for tag in page.tags %}
+    <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+</article>
