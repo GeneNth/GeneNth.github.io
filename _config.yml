@@ -1,4 +1,3 @@
-# ===== 网站基本信息 =====
 title: 基因N方
 slogan: Explore Genes, Share Fun
 tagline: 探索基因与音乐的科学交叉领域
@@ -10,30 +9,12 @@ email: genenth@163.com
 url: "https://genenth.github.io"
 baseurl: ""
 github_username: GeneNth
-
-# ===== 主题与显示 =====
-theme: minima
-show_downloads: false
 permalink: /:title/
-
-# ===== Markdown 解析 =====
 markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    css_class: 'highlight'
-
-# ===== SEO 与社交 =====
-twitter:
-  username: genenth
-social:
-  name: GeneNth
-  links:
-    - https://github.com/GeneNth
-
-# ===== 排除文件 =====
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -42,27 +23,9 @@ exclude:
   - .sass-cache
   - .jekyll-cache
   - README.md
-  - index.html
-
-# ===== 插件 =====
+include:
+  - assets
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-title: 基因N方
-author: GeneNth
-email: your@email.com
-description: 探索基因与音乐的交叉领域
-baseurl: ""
-url: "https://GeneNth.github.io"
-twitter_username: GeneNth
-github_username: GeneNth
-
-permalink: /:year/:month/:day/:title.html
-
-markdown: kramdown
-theme: minima
-
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
