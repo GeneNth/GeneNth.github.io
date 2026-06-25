@@ -4,13 +4,17 @@ title: 关于
 permalink: /about/
 ---
 
+<div class="about-card">
+
 ## 👋 你好，我是 GeneNth
 
 **NGS 从业者 · 技术内容创作者 · 终身学习者**
 
-`🔬 NGS 建库` `🧲 磁珠纯化` `🤖 自动化` `🧬 CRISPR` `🐍 Python` `📝 科学传播`
+<span class="skill-tag">🔬 NGS 建库</span> <span class="skill-tag">🧲 磁珠纯化</span> <span class="skill-tag">🤖 自动化</span> <span class="skill-tag">🧬 CRISPR</span> <span class="skill-tag">🐍 Python</span> <span class="skill-tag">📝 科学传播</span>
 
----
+</div>
+
+<div class="about-card">
 
 ## 🎯 关于基因N方
 
@@ -18,9 +22,11 @@ permalink: /about/
 
 诞生于 2026 年 4 月，初衷很简单：
 
-&gt; *"让硬核技术变得有趣且可及，把实验室里的思考变成可复用的数字资产。"*
+> *"让硬核技术变得有趣且可及，把实验室里的思考变成可复用的数字资产。"*
 
----
+</div>
+
+<div class="about-card">
 
 ## 🛠️ 技术领域
 
@@ -32,8 +38,9 @@ permalink: /about/
 | **长读长测序** | ONT/PacBio 杂交捕获技术跟踪 |
 | **内容工程** | Python 自动化脚本、GitHub Pages 静态网站、技术文档写作 |
 
----
+</div>
 
+<div class="about-card">
 
 ## 📬 找到我
 
@@ -42,9 +49,12 @@ permalink: /about/
 - 📱 **微信公众号**：基因N方
 - 🎵 **关注领域**：基因与音乐的科学交叉
 
----
+</div>
 
+<div class="about-card">
 
-&gt; ✨ *"即使是最小的帆，也能远航。"* ⛵
+> ✨ *"即使是最小的帆，也能远航。"* ⛵
 
 本站由 Jekyll + GitHub Pages 驱动，所有文章采用 Markdown 源文件归档。
+
+</div>
