@@ -1,0 +1,47 @@
+<!-- 作者卡片 -->
+<div class="widget author-card">
+  <div class="author-avatar">
+    <img src="{{ '/assets/logo.svg' | relative_url }}" alt="avatar">
+  </div>
+  <h3 class="author-name">{{ site.author }}</h3>
+  <p class="author-desc">{{ site.description }}</p>
+  <div class="author-stats">
+    <div class="stat-item">
+      <span class="stat-num">{{ site.posts.size }}</span>
+      <span class="stat-label">文章</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">{{ site.tags.size }}</span>
+      <span class="stat-label">标签</span>
+    </div>
+  </div>
+</div>
+
+<!-- 公告 -->
+<div class="widget announcement">
+  <h4 class="widget-title">📢 公告</h4>
+  <p>即使再小的帆也能远航 ⛵</p>
+</div>
+
+<!-- 最新文章 -->
+<div class="widget recent-posts">
+  <h4 class="widget-title">📝 最新文章</h4>
+  <ul>
+    {% for post in site.posts limit:5 %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="post-date">{{ post.date | date: "%m-%d" }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- 标签云 -->
+<div class="widget tag-cloud">
+  <h4 class="widget-title">🏷️ 标签</h4>
+  <div class="tags">
+    {% for tag in site.tags limit:15 %}
+    <a href="#" class="tag-item">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
+</div>
