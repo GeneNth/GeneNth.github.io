@@ -512,6 +512,26 @@ body {
   text-decoration: underline;
 }
 
+.about-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-card li {
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.about-card li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 /* 移动端适配 */
 @media (max-width: 768px) {
   .about-card {
