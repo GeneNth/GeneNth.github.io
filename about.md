@@ -53,7 +53,6 @@ permalink: /about/
 
 <div class="about-card" markdown="1">
 
-> ✨ *"即使是最小的帆，也能远航。"* ⛵
 
 本站由 Jekyll + GitHub Pages 驱动，所有文章采用 Markdown 源文件归档。
 
