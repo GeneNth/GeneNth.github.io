@@ -27,82 +27,15 @@ permalink: /genemusic/
 
 &lt;/div&gt;
 
-&lt;div class="about-card music-card" markdown="1"&gt;
-
-## 🎼 Circadian Symphony
-
-&lt;div class="music-player"&gt;
-  &lt;audio id="audio1" src="{{ '/assets/music/circadian_symphony.mp3' | relative_url }}"&gt;&lt;/audio&gt;
-  
-  &lt;div class="player-main"&gt;
-    &lt;button class="play-btn" onclick="togglePlay('audio1', this)"&gt;
-      &lt;span class="play-icon"&gt;▶&lt;/span&gt;
-      &lt;span class="pause-icon" style="display:none"&gt;⏸&lt;/span&gt;
-    &lt;/button&gt;
-    
-    &lt;div class="player-info"&gt;
-      &lt;div class="music-title"&gt;Circadian Symphony&lt;/div&gt;
-      &lt;div class="music-meta"&gt;基于 CLOCK/BMAL1 基因表达数据 | 时长 03:24&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  
-  &lt;div class="progress-bar" onclick="seek(event, 'audio1')"&gt;
-    &lt;div class="progress-fill" id="progress1"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  
-  &lt;div class="time-display"&gt;
-    &lt;span id="current1"&gt;00:00&lt;/span&gt; / &lt;span id="duration1"&gt;03:24&lt;/span&gt;
-  &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="music-desc"&gt;
-
-### 创作背景
-
-这首作品基于**昼夜节律基因 CLOCK 和 BMAL1** 的 RNA-seq 表达数据创作。
-
-**数据来源**：小鼠肝脏组织 24 小时周期性采样  
-**算法**：Python Magenta + 自定义映射规则  
-**映射逻辑**：
-- 基因表达量 → 音高（高表达 = 高音）
-- 表达变化率 → 节奏速度
-- 周期性波动 → 和弦进行
-
-**科学意义**：将不可见的基因调控网络转化为可听化的声音景观，帮助研究者直观感受生物钟的"分子节拍"。
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div class="about-card music-card" markdown="1"&gt;
+&lt;div class="about-card music-card"&gt;
 
 ## 🎹 Protein Piano
 
-&lt;div class="music-player"&gt;
-  &lt;audio id="audio2" src="{{ '/assets/music/protein_piano.mp3' | relative_url }}"&gt;&lt;/audio&gt;
-  
-  &lt;div class="player-main"&gt;
-    &lt;button class="play-btn" onclick="togglePlay('audio2', this)"&gt;
-      &lt;span class="play-icon"&gt;▶&lt;/span&gt;
-      &lt;span class="pause-icon" style="display:none"&gt;⏸&lt;/span&gt;
-    &lt;/button&gt;
-    
-    &lt;div class="player-info"&gt;
-      &lt;div class="music-title"&gt;Protein Piano&lt;/div&gt;
-      &lt;div class="music-meta"&gt;α-螺旋与β-折叠结构映射 | 时长 02:15&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  
-  &lt;div class="progress-bar" onclick="seek(event, 'audio2')"&gt;
-    &lt;div class="progress-fill" id="progress2"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  
-  &lt;div class="time-display"&gt;
-    &lt;span id="current2"&gt;00:00&lt;/span&gt; / &lt;span id="duration2"&gt;02:15&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+{% include music-player.html id="1" src="/assets/music/protein_piano.mp3" title="Protein Piano" meta="α-螺旋与β-折叠结构映射 | 时长 02:15" duration="02:15" %}
 
-&lt;div class="music-desc"&gt;
+&lt;div class="music-desc" markdown="1"&gt;
 
 ### 创作背景
 
@@ -125,9 +58,9 @@ permalink: /genemusic/
 
 ## 🎼 更多实验项目
 
+- **Circadian Symphony** — 基于 CLOCK/BMAL1 基因表达数据的实时生成音乐
 - **Genome Jazz** — 用基因组变异数据即兴生成爵士乐段
 - **Methyl-Beats** — 基于 DNA 甲基化模式的电子节奏
-- **CRISPR Chords** — gRNA 序列与和弦进行的映射探索
 
 &lt;/div&gt;
 
@@ -154,21 +87,15 @@ function togglePlay(audioId, btn) {
   const pauseIcon = btn.querySelector('.pause-icon');
   
   if (audio.paused) {
-    // 暂停其他音频
     document.querySelectorAll('audio').forEach(a =&gt; {
-      if (a.id !== audioId) {
-        a.pause();
-        a.currentTime = 0;
-      }
+      if (a.id !== audioId) { a.pause(); a.currentTime = 0; }
     });
-    // 重置其他按钮
     document.querySelectorAll('.play-btn').forEach(b =&gt; {
       if (b !== btn) {
         b.querySelector('.play-icon').style.display = '';
         b.querySelector('.pause-icon').style.display = 'none';
       }
     });
-    
     audio.play();
     playIcon.style.display = 'none';
     pauseIcon.style.display = '';
@@ -179,20 +106,16 @@ function togglePlay(audioId, btn) {
   }
 }
 
-// 进度条更新
 document.querySelectorAll('audio').forEach(audio =&gt; {
   const id = audio.id.replace('audio', '');
-  
   audio.addEventListener('timeupdate', () =&gt; {
     const progress = (audio.currentTime / audio.duration) * 100;
     document.getElementById('progress' + id).style.width = progress + '%';
     document.getElementById('current' + id).textContent = formatTime(audio.currentTime);
   });
-  
   audio.addEventListener('loadedmetadata', () =&gt; {
     document.getElementById('duration' + id).textContent = formatTime(audio.duration);
   });
-  
   audio.addEventListener('ended', () =&gt; {
     const btn = document.querySelector(`button[onclick*="${audio.id}"]`);
     btn.querySelector('.play-icon').style.display = '';
@@ -203,16 +126,14 @@ document.querySelectorAll('audio').forEach(audio =&gt; {
 function seek(event, audioId) {
   const audio = document.getElementById(audioId);
   const bar = event.currentTarget;
-  const clickX = event.offsetX;
-  const width = bar.offsetWidth;
-  const percent = clickX / width;
+  const percent = event.offsetX / bar.offsetWidth;
   audio.currentTime = percent * audio.duration;
 }
 
 function formatTime(seconds) {
   if (isNaN(seconds)) return '00:00';
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
 }
 &lt;/script&gt;
