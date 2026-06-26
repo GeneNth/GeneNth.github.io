@@ -1,21 +1,17 @@
-<!-- _includes/music-scripts.html -->
 <script>
 (function() {
   'use strict';
 
   function togglePlay(audioId, btn) {
     const audio = document.getElementById(audioId);
-    if (!audio) return;
+    if (!audio) { console.error('Audio not found:', audioId); return; }
 
     const playIcon = btn.querySelector('.play-icon');
     const pauseIcon = btn.querySelector('.pause-icon');
 
     if (audio.paused) {
       document.querySelectorAll('audio').forEach(a => {
-        if (a.id !== audioId) {
-          a.pause();
-          a.currentTime = 0;
-        }
+        if (a.id !== audioId) { a.pause(); a.currentTime = 0; }
       });
       document.querySelectorAll('.play-btn').forEach(b => {
         if (b !== btn) {
@@ -26,7 +22,7 @@
         }
       });
 
-      audio.play();
+      audio.play().catch(e => console.error('Play failed:', e));
       if (playIcon) playIcon.style.display = 'none';
       if (pauseIcon) pauseIcon.style.display = '';
     } else {
@@ -39,8 +35,7 @@
   function seek(event, audioId) {
     const audio = document.getElementById(audioId);
     if (!audio || !audio.duration) return;
-    const bar = event.currentTarget;
-    const percent = event.offsetX / bar.offsetWidth;
+    const percent = event.offsetX / event.currentTarget.offsetWidth;
     audio.currentTime = percent * audio.duration;
   }
 
@@ -51,28 +46,23 @@
     return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
   }
 
-  // 适配 audio-xxx 和 audioxxx 两种 ID 格式
   document.querySelectorAll('audio').forEach(audio => {
     const suffix = audio.id.replace(/^audio-?/, '');
 
     audio.addEventListener('timeupdate', () => {
-      const bar = document.getElementById('progress-' + suffix) || 
-                  document.getElementById('progress' + suffix);
-      const cur = document.getElementById('current-' + suffix) ||
-                  document.getElementById('current' + suffix);
+      const bar = document.getElementById('progress-' + suffix) || document.getElementById('progress' + suffix);
+      const cur = document.getElementById('current-' + suffix) || document.getElementById('current' + suffix);
       if (bar) bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
       if (cur) cur.textContent = formatTime(audio.currentTime);
     });
 
     audio.addEventListener('loadedmetadata', () => {
-      const dur = document.getElementById('duration-' + suffix) ||
-                  document.getElementById('duration' + suffix);
+      const dur = document.getElementById('duration-' + suffix) || document.getElementById('duration' + suffix);
       if (dur && dur.textContent === '00:00') dur.textContent = formatTime(audio.duration);
     });
 
     audio.addEventListener('ended', () => {
-      const btn = document.querySelector(`button[onclick*="'audio-${suffix}'"]`) ||
-                  document.querySelector(`button[onclick*="audio-${suffix}"]`);
+      const btn = document.querySelector(`button[onclick*="${audio.id}"]`);
       if (btn) {
         const pi = btn.querySelector('.play-icon');
         const pai = btn.querySelector('.pause-icon');
