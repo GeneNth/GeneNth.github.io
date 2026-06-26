@@ -49,7 +49,7 @@ permalink: /genemusic/
    id="protein-piano" 
    src="/assets/audio/protein-piano.mp3" 
    title="Protein Piano" 
-   meta="α-螺旋与β-折叠结构映射 | 时长 02:15" 
+   meta="α-螺旋与β-折叠结构映射 | 时长 03:48" 
    duration="02:15" 
 %}
 
