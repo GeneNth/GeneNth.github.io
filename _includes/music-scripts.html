@@ -76,3 +76,28 @@
   window.seek = seek;
 })();
 </script>
+
+</script>
+
+<script>
+// 微信二维码弹窗
+// 微信二维码弹窗
+function toggleWechatQR() {
+  const modal = document.getElementById('wechat-modal');
+  if (modal) {
+    modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+  }
+}
+
+function closeWechatQR(event) {
+  if (!event || event.target.id === 'wechat-modal' || event.target.classList.contains('wechat-close')) {
+    const modal = document.getElementById('wechat-modal');
+    if (modal) modal.style.display = 'none';
+  }
+}
+
+// ESC 键关闭
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeWechatQR();
+});
+</script>
