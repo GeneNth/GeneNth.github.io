@@ -1,23 +1,24 @@
+<!-- _includes/music-player.html -->
 <div class="music-player">
-  <audio id="audio{{ include.id }}" src="{{ include.src | relative_url }}"></audio>
-  
-  <div class="player-main">
-    <button class="play-btn" onclick="togglePlay('audio{{ include.id }}', this)">
-      <span class="play-icon">▶</span>
-      <span class="pause-icon" style="display:none">⏸</span>
-    </button>
-    
-    <div class="player-info">
-      <div class="music-title">{{ include.title }}</div>
-      <div class="music-meta">{{ include.meta }}</div>
-    </div>
+<audio id="audio-{{ include.id }}" src="{{ include.src | relative_url }}"></audio>
+
+<div class="player-main">
+  <button class="play-btn" onclick="togglePlay('audio-{{ include.id }}', this)">
+    <span class="play-icon">▶</span>
+    <span class="pause-icon" style="display:none">⏸</span>
+  </button>
+
+  <div class="player-info">
+    <div class="music-title">{{ include.title }}</div>
+    <div class="music-meta">{{ include.meta }}</div>
   </div>
-  
-  <div class="progress-bar" onclick="seek(event, 'audio{{ include.id }}')">
-    <div class="progress-fill" id="progress{{ include.id }}"></div>
-  </div>
-  
-  <div class="time-display">
-    <span id="current{{ include.id }}">00:00</span> / <span id="duration{{ include.id }}">{{ include.duration }}</span>
-  </div>
+</div>
+
+<div class="progress-bar" onclick="seek(event, 'audio-{{ include.id }}')">
+  <div class="progress-fill" id="progress-{{ include.id }}"></div>
+</div>
+
+<div class="time-display">
+  <span id="current-{{ include.id }}">00:00</span> / <span id="duration-{{ include.id }}">{{ include.duration }}</span>
+</div>
 </div>
