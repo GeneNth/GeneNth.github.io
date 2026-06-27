@@ -758,3 +758,81 @@ body {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+/* ===== 底部社交图标 ===== */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.footer-social a {
+  color: #999;
+  transition: color 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(233, 30, 99, 0.05);
+}
+
+.footer-social a:hover {
+  color: #e91e63;
+  transform: translateY(-2px);
+  background: rgba(233, 30, 99, 0.1);
+}
+
+/* ===== 微信二维码弹窗 ===== */
+.wechat-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.wechat-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  max-width: 320px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.wechat-modal-content img {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.wechat-hint {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.wechat-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.wechat-close:hover {
+  color: #e91e63;
+}
